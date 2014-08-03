@@ -1,0 +1,15 @@
+//
+//  ELPictureDataProvider.h
+//  TravelBug
+//
+//  Created by Edan Lichtenstein on 7/31/14.
+//  Copyright (c) 2014 Edan Lichtenstein. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface ELPictureDataProvider : NSObject
+
+- (void) fetchPictures;
+
+@end

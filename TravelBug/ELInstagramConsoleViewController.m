@@ -11,10 +11,12 @@
 #import "ELConstants.h"
 #import "Picture+Methods.h"
 #import "ELThumbnailListViewController.h"
+#import "ELPictureDataProvider.h"
 
 @interface ELInstagramConsoleViewController ()
 
 @property (strong, nonatomic) ELDataStore *dataStore;
+@property (strong, nonatomic) ELPictureDataProvider *dataProvider;
 
 @property (strong, nonatomic) UIWebView *consoleWebView;
 @property (strong, nonatomic) ELConstants *constantMethods;
@@ -30,7 +32,10 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+
+        self.dataStore = [ELDataStore sharedELDataStore];
+        self.constantMethods = [[ELConstants alloc] init];
+        self.dataProvider = [[ELPictureDataProvider alloc] init];
     }
     return self;
 }
@@ -40,9 +45,8 @@
 {
     [super viewDidLoad];
    
-    
-    self.dataStore = [ELDataStore sharedELDataStore];
-    self.constantMethods = [[ELConstants alloc] init];
+    //[self.dataProvider fetchPictures];
+
     
     self.consoleWebView = [[UIWebView alloc] initWithFrame:self.view.bounds];
     self.consoleWebView.delegate = self;
@@ -89,10 +93,20 @@
         //NSLog(@"AccessToken = %@ ",self.stringAccessToken);
  
         self.consoleWebView.hidden = YES;
-        [self fetchPopularMediaWithCompletionBlock:^(BOOL success) {}];
+        
+    //    [self segueToListView];
+    [self fetchPopularMediaWithCompletionBlock:^(BOOL success) {}];
     }
 
     return YES;
+}
+
+
+#pragma mark - Navigation
+
+-(void)segueToListView {
+    ELThumbnailListViewController *thumbnailListViewController = [[ELThumbnailListViewController alloc] initWithStyle:UITableViewStylePlain];
+    [self.navigationController pushViewController:thumbnailListViewController animated:YES];
 }
 
 
@@ -101,9 +115,8 @@
 - (void)fetchPopularMediaWithCompletionBlock:(void (^)(BOOL success))completionBlock
 {
     
-    
-    //NSString *instagramEndpoint = [NSString stringWithFormat:@"https://api.instagram.com/v1/users/21196514/media/recent/?client_id=%@", INSTAGRAM_CLIENT_ID];
-    NSString *instagramEndpoint = [NSString stringWithFormat:@"https://api.instagram.com/v1/media/popular?client_id=%@", INSTAGRAM_CLIENT_ID];
+    NSString *instagramEndpoint = [NSString stringWithFormat:@"https://api.instagram.com/v1/users/%@/media/recent/?client_id=%@&count=10",ID_MATT_GEE, INSTAGRAM_CLIENT_ID];
+    //NSString *instagramEndpoint = [NSString stringWithFormat:@"https://api.instagram.com/v1/media/popular?client_id=%@", INSTAGRAM_CLIENT_ID];
     NSURL *URL = [NSURL URLWithString:instagramEndpoint];
     //NSLog(@"Response URL : %@ ",instagramEndpoint);
    
@@ -161,11 +174,5 @@
 
 
 
-#pragma mark - Navigation
-
--(void)segueToListView {
-    ELThumbnailListViewController *thumbnailListViewController = [[ELThumbnailListViewController alloc] initWithStyle:UITableViewStylePlain];
-    [self.navigationController pushViewController:thumbnailListViewController animated:YES];
-}
 
 @end

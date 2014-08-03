@@ -7,18 +7,36 @@
 //
 
 #import "ELAppDelegate.h"
+#import "ELPictureDataProvider.h"
 #import "ELInstagramConsoleViewController.h"
+#import "ELThumbnailListViewController.h"
+
+@interface ELAppDelegate ()
+
+@property (strong, nonatomic) ELPictureDataProvider *pictureDataProvider;
+
+@end
 
 @implementation ELAppDelegate
+
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    ELInstagramConsoleViewController *controller = [[ELInstagramConsoleViewController alloc]init];
-    UINavigationController* navigation = [[UINavigationController alloc] initWithRootViewController:controller];
-    self.window.rootViewController = navigation;
+    
+    self.pictureDataProvider = [[ELPictureDataProvider alloc] init];
+    [self.pictureDataProvider fetchPictures];
+    
+    // O-Auth Controller
+    //ELInstagramConsoleViewController *controller = [[ELInstagramConsoleViewController alloc]init];
+    //UINavigationController* navigation = [[UINavigationController alloc] initWithRootViewController:controller];
+
+    
+    ELThumbnailListViewController *thumbnailListViewController = [[ELThumbnailListViewController alloc] initWithStyle:UITableViewStylePlain];
+   // [self.navigationController pushViewController:thumbnailListViewController animated:YES];
+    
+    self.window.rootViewController = thumbnailListViewController;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     

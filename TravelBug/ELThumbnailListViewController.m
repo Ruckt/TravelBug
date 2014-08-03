@@ -28,7 +28,8 @@ static NSInteger const CELL_HEIGHT = 170;
     if (self) {
         
         self.dataStore = [ELDataStore sharedELDataStore];
-        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveEvent:) name:@"FetchComplete" object:nil];
+
         self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
@@ -42,6 +43,15 @@ static NSInteger const CELL_HEIGHT = 170;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+#pragma mark - NSNotification Center
+
+- (void)receiveEvent:(NSNotification *)notification {
+    NSLog(@"Received Picture Data Data Data");
+    
+    [self.tableView reloadData];
+}
+
 
 
 
@@ -87,7 +97,8 @@ static NSInteger const CELL_HEIGHT = 170;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ELPictureViewController *pictureViewController = [[ELPictureViewController alloc] initWithPicture:[self.dataStore getPictureAtIndex:indexPath.row]];
     NSLog(@"index Path %ld", (long)indexPath.row);
-    [self.navigationController pushViewController:pictureViewController animated:YES];
+    [self presentViewController:pictureViewController animated:YES completion:nil];
+  //  [self.navigationController pushViewController:pictureViewController animated:YES];
 }
 
 @end
