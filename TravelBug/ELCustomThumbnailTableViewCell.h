@@ -11,6 +11,10 @@
 
 @interface ELCustomThumbnailTableViewCell : UITableViewCell
 
+@property (nonatomic, weak) IBOutlet UIImageView *cellImageView;
+@property (nonatomic, weak) IBOutlet UILabel *locationLabel;
+
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier picture:(Picture *)picture;
 - (void)configureCellWithPicture:(Picture *)thePicture;
 

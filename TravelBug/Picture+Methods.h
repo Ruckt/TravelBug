@@ -11,8 +11,9 @@
 @interface Picture (Methods)
 
 + (Picture *) pictureID:(NSString *)pictureID
-          thumbnailURL:(NSString *)thumbnail
-        andStandardURL:(NSString *)standard
-inManagedObjectContext:(NSManagedObjectContext *)context;
+           thumbnailURL:(NSString *)thumbnail
+         andStandardURL:(NSString *)standard
+             atLocation:(NSString *)location
+ inManagedObjectContext:(NSManagedObjectContext *)context;
 
 @end

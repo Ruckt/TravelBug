@@ -12,19 +12,19 @@
 
 
 +(Picture *) pictureID:(NSString *)pictureID
-               thumbnailURL:(NSString *)thumbnail
-                 andStandardURL:(NSString *)standard
-   inManagedObjectContext:(NSManagedObjectContext *)context{
-   
+          thumbnailURL:(NSString *)thumbnail
+        andStandardURL:(NSString *)standard
+            atLocation:(NSString *)location
+inManagedObjectContext:(NSManagedObjectContext *)context
+{
     Picture *picture = nil;
     picture = [NSEntityDescription insertNewObjectForEntityForName:@"Picture" inManagedObjectContext:context];
     NSString *string = pictureID;
     picture.pictureID = [NSNumber numberWithInteger:[string integerValue]];
     picture.thumbnailLink = thumbnail;
     picture.standardLink = standard;
-    
+    picture.location = location;
     return picture;
-    
 }
 
 

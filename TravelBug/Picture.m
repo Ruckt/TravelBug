@@ -2,7 +2,7 @@
 //  Picture.m
 //  TravelBug
 //
-//  Created by Edan Lichtenstein on 6/30/14.
+//  Created by Edan Lichtenstein on 8/5/14.
 //  Copyright (c) 2014 Edan Lichtenstein. All rights reserved.
 //
 
@@ -11,8 +11,9 @@
 
 @implementation Picture
 
-@dynamic thumbnailLink;
-@dynamic standardLink;
 @dynamic pictureID;
+@dynamic standardLink;
+@dynamic thumbnailLink;
+@dynamic location;
 
 @end

@@ -23,7 +23,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+ //   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     self.pictureDataProvider = [[ELPictureDataProvider alloc] init];
     [self.pictureDataProvider fetchPictures];
@@ -33,12 +33,12 @@
     //UINavigationController* navigation = [[UINavigationController alloc] initWithRootViewController:controller];
 
     
-    ELThumbnailListViewController *thumbnailListViewController = [[ELThumbnailListViewController alloc] initWithStyle:UITableViewStylePlain];
+    //ELThumbnailListViewController *thumbnailListViewController = [[ELThumbnailListViewController alloc] initWithStyle:UITableViewStylePlain];
    // [self.navigationController pushViewController:thumbnailListViewController animated:YES];
     
-    self.window.rootViewController = thumbnailListViewController;
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
+//    self.window.rootViewController = thumbnailListViewController;
+//    self.window.backgroundColor = [UIColor whiteColor];
+//    [self.window makeKeyAndVisible];
     
     return YES;
 }

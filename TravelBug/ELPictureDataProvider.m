@@ -29,6 +29,7 @@
 
 - (void)postNotification //post notification method and logic
 {
+    NSLog(@"Posting fetch notification");
     [[NSNotificationCenter defaultCenter] postNotificationName:@"FetchComplete" object:nil];
 }
 
@@ -56,8 +57,11 @@
 {
     
     NSDictionary *subDictionary = [dictionary objectForKey:@"data"];
+   
     
     for (NSDictionary *eachPictureInfo in subDictionary) {
+        
+        // NSLog(@"Data %@", eachPictureInfo);
         
         NSString *picutreID = [eachPictureInfo objectForKey:@"id"];
         
@@ -68,16 +72,23 @@
         NSDictionary *standardInfo = [imageInfo objectForKey:@"standard_resolution"];
         NSString *standardLink = [standardInfo objectForKey:@"url"];
         
-        NSString *location = [eachPictureInfo objectForKey:@"location"];
-        NSLog(@"Location %@", location);
+        //NSLog(@"Location Info %@", locationInfo);
         
-        Picture *picture = [Picture pictureID:picutreID thumbnailURL:thumbnailLink andStandardURL:standardLink inManagedObjectContext:self.dataStore.managedObjectContext];
+        NSString *location = @"Paradise";
+        if ([eachPictureInfo objectForKey:@"location"] != [NSNull null]) {
+            NSDictionary *locationInfo = [eachPictureInfo objectForKey:@"location"];
+            location = [locationInfo objectForKey:@"name"];
+            NSLog(@"Location %@", location);
+        }
+
+        Picture *picture = [Picture pictureID:picutreID thumbnailURL:thumbnailLink andStandardURL:standardLink atLocation:location inManagedObjectContext:self.dataStore.managedObjectContext];
         [self.dataStore addPicture:picture];
         
         // NSLog(@"Picture Info %@", eachPictureInfo);
         //        NSLog(@"Thumbnail %@", thumbnailLink);
         //        NSLog(@"Standard %@", standardLink);
     }
+    
 }
 
     

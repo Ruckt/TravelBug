@@ -163,7 +163,7 @@
         NSString *location = [eachPictureInfo objectForKey:@"location"];
         NSLog(@"Location %@", location);
         
-        Picture *picture = [Picture pictureID:picutreID thumbnailURL:thumbnailLink andStandardURL:standardLink inManagedObjectContext:self.dataStore.managedObjectContext];
+        Picture *picture = [Picture pictureID:picutreID thumbnailURL:thumbnailLink andStandardURL:standardLink atLocation:location inManagedObjectContext:self.dataStore.managedObjectContext];
         [self.dataStore addPicture:picture];
         
       // NSLog(@"Picture Info %@", eachPictureInfo);

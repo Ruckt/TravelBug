@@ -15,7 +15,6 @@ static NSInteger const THUMBNAIL_Y = 10;
 
 
 @interface ELCustomThumbnailTableViewCell()
-@property (strong, nonatomic) UIImageView *cellImageView;
 @end
 
 @implementation ELCustomThumbnailTableViewCell
@@ -25,22 +24,29 @@ static NSInteger const THUMBNAIL_Y = 10;
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
-        self.cellImageView = [self addImageToCell:picture];
-        [self.contentView addSubview:self.cellImageView];
+        //self.locationLabel.text = picture.location;
+        
+        NSLog(@"Init location: %@", picture.location);
+        //self.cellImageView = [self addImageToCell:picture];
+        //[self.contentView addSubview:self.cellImageView];
     }
     return self;
 }
 
-- (void)configureCellWithPicture:(Picture *)thePicture {
+- (void)configureCellWithPicture:(Picture *)picture {
+
+    self.locationLabel.text = picture.location;
+    NSLog(@"Configure location: %@", picture.location);
+    
     // Taking apart "thePicture" and fetching the image asyncronously.
-    dispatch_queue_t fetchQ = dispatch_queue_create("Fetch Image", NULL);
-    dispatch_async(fetchQ, ^{
-        NSURL *address = [NSURL URLWithString:thePicture.thumbnailLink];
-        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:address]];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.cellImageView.image = image;
-        });
-    });
+//    dispatch_queue_t fetchQ = dispatch_queue_create("Fetch Image", NULL);
+//    dispatch_async(fetchQ, ^{
+//        NSURL *address = [NSURL URLWithString:thePicture.thumbnailLink];
+//        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:address]];
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            self.cellImageView.image = image;
+//        });
+//    });
 }
 
 - (UIImageView *)addImageToCell:(Picture *)pictureData

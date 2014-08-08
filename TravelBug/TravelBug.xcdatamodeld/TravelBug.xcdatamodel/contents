@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13E28" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Picture" representedClassName="Picture" syncable="YES">
+        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pictureID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="standardLink" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="thumbnailLink" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Picture" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="Picture" positionX="-63" positionY="-18" width="128" height="105"/>
     </elements>
 </model>

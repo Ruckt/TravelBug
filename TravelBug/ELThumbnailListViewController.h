@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ELThumbnailListViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
+@interface ELThumbnailListViewController : UITableViewController
 
 @end
