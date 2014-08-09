@@ -24,6 +24,7 @@ static NSString *CellIdentifier = @"Cell";
 @implementation ELThumbnailListViewController
 
 
+
 //- (id)initWithStyle:(UITableViewStyle)style {
 //    self = [super initWithStyle:style];
 //    if (self) {
@@ -46,7 +47,6 @@ static NSString *CellIdentifier = @"Cell";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveEvent:) name:@"FetchComplete" object:nil];
 
     self.pictures = [self.dataStore pictures];
-    NSLog(@"viewed did load");
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
