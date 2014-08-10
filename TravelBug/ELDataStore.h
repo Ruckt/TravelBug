@@ -19,6 +19,8 @@
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic, strong) NSMutableArray *pictures;
+@property (nonatomic, strong) NSMutableArray *photographers;
+
 
 
 + (ELDataStore *)sharedELDataStore;

@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13E28" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Photographer" representedClassName="Photographer" syncable="YES">
+        <attribute name="handle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="idNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="picturesTaken" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Picture" inverseName="photographer" inverseEntity="Picture" syncable="YES"/>
+    </entity>
     <entity name="Picture" representedClassName="Picture" syncable="YES">
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pictureID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="standardLink" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="thumbnailLink" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="photographer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Photographer" inverseName="picturesTaken" inverseEntity="Photographer" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Picture" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="Photographer" positionX="-3521" positionY="-6732" width="128" height="103"/>
+        <element name="Picture" positionX="-3789" positionY="-6759" width="128" height="118"/>
     </elements>
 </model>

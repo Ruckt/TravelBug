@@ -35,6 +35,16 @@
     return _sharedELDataStore;
 }
 
+# pragma mark - Photographer Methods
+
+- (NSArray *)photographers {
+    if (!_photographers) {
+        _photographers = [NSMutableArray new];
+    }
+    return _photographers;
+}
+
+
 
 # pragma mark - Picture Methods
 

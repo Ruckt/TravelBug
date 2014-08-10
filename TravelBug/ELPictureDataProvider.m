@@ -23,7 +23,7 @@
 @implementation ELPictureDataProvider
 
 - (id)init {
-    self.dataStore = [ELDataStore sharedELDataStore];
+    _dataStore = [ELDataStore sharedELDataStore];
     return self;
 }
 
