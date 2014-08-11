@@ -44,7 +44,7 @@
     return _photographers;
 }
 
-
+  
 
 # pragma mark - Picture Methods
 
