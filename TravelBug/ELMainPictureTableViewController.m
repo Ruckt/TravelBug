@@ -17,7 +17,10 @@ static NSString *CellIdentifier = @"Cell";
 @interface ELMainPictureTableViewController ()
 
 @property (strong, nonatomic) ELDataStore *dataStore;
+@property (strong, nonatomic) NSOperationQueue *imageOperationQueue;
+
 @property (strong, nonatomic) NSArray *pictures;
+
 
 @end
 
@@ -28,6 +31,9 @@ static NSString *CellIdentifier = @"Cell";
 {
     self.dataStore = [ELDataStore sharedELDataStore];
     ELPictureDataProvider *dataProvider = [ELPictureDataProvider new];
+    self.imageOperationQueue = [[NSOperationQueue alloc] init];
+    [self.imageOperationQueue setMaxConcurrentOperationCount:10];
+    
     
     [dataProvider fetchPicturesWithCompletionHandler:^(NSArray *images, NSError *error) {
         if (error) {
@@ -109,20 +115,19 @@ static NSString *CellIdentifier = @"Cell";
     
     if (picture.imageBinaryData == NULL) {
         
-        dispatch_queue_t fetchQ = dispatch_queue_create("Fetch Image", NULL);
-        dispatch_async(fetchQ, ^{
+        [self.imageOperationQueue addOperationWithBlock:^{
             
             NSURL *address = [NSURL URLWithString:picture.thumbnailLink];
             picture.imageBinaryData = [NSData dataWithContentsOfURL:address];
             UIImage *image = [UIImage imageWithData:picture.imageBinaryData];
             
-            dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 //ELCustomThumbnailTableViewCell *updateCell = (ELCustomThumbnailTableViewCell *) [theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
                 if (cell) { // if nil then cell is not visible hence no need to update
                     cell.cellImageView.image = image;
                 }
-            });
-        });
+            }];
+        }];
     }
     else {
         cell.cellImageView.image = [UIImage imageWithData:picture.imageBinaryData];
@@ -132,7 +137,6 @@ static NSString *CellIdentifier = @"Cell";
     
     return cell;
 }
-
 
 
 
