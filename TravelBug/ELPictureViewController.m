@@ -51,8 +51,15 @@ static NSInteger const STANDARD_Y = 124;
     //[self.view setBackgroundColor: [UIColor whiteColor]];
     
     [self buildPictureView:self.picture];
-//
-//    [self.view addSubview:imageView];
+
+    // setup a pinch gesture recognizer and make the target the custom transition handler
+    UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self.gestureTarget action:@selector(handlePinch:)];
+    [self.view addGestureRecognizer:pinchRecognizer];
+    
+    // setup an edge pan gesture recognizer and make the target the custom transition handler
+    UIScreenEdgePanGestureRecognizer *edgePanRecognizer = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self.gestureTarget action:@selector(handleEdgePan:)];
+    edgePanRecognizer.edges = UIRectEdgeLeft;
+    [self.view addGestureRecognizer:edgePanRecognizer];
 }
 
 
