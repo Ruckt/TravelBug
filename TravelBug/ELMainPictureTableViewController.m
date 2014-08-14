@@ -1,29 +1,27 @@
 //
-//  ELThumbnailListViewController.m
+//  ELMainPictureTableViewController
 //  TravelBug
 //
 //  Created by Edan Lichtenstein on 7/1/14.
 //  Copyright (c) 2014 Edan Lichtenstein. All rights reserved.
 //
 
-#import "ELThumbnailListViewController.h"
+#import "ELMainPictureTableViewController.h"
 #import "ELCustomThumbnailTableViewCell.h"
 #import "ELPictureViewController.h"
 #import "ELDataStore.h"
+#import "ELPictureDataProvider.h"
 
-//static NSInteger const CELL_HEIGHT = 170;
 static NSString *CellIdentifier = @"Cell";
 
-@interface ELThumbnailListViewController ()
+@interface ELMainPictureTableViewController ()
 
 @property (strong, nonatomic) ELDataStore *dataStore;
 @property (strong, nonatomic) NSArray *pictures;
 
 @end
 
-@implementation ELThumbnailListViewController
-
-
+@implementation ELMainPictureTableViewController
 
 //- (id)initWithStyle:(UITableViewStyle)style {
 //    self = [super initWithStyle:style];
@@ -44,9 +42,38 @@ static NSString *CellIdentifier = @"Cell";
 - (void) viewDidLoad
 {
     self.dataStore = [ELDataStore sharedELDataStore];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveEvent:) name:@"FetchComplete" object:nil];
+    ELPictureDataProvider *dataProvider = [ELPictureDataProvider new];
+    
+    [dataProvider fetchPicturesWithCompletionHandler:^(NSArray *images, NSError *error) {
+        if (error) {
+            NSLog(@"Error: %@", error);
+            // Instead of loading images from internet, if the request has errors, we can load it from core data:
 
-    self.pictures = [self.dataStore pictures];
+            NSManagedObjectContext *context = self.dataStore.managedObjectContext;
+            // Load from core data:
+            NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+            NSEntityDescription *entity = [NSEntityDescription entityForName:@"Picture" inManagedObjectContext:context];
+            [fetchRequest setEntity:entity];
+            // Specify how the fetched objects should be sorted
+            NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"pictureID" ascending:YES];
+            [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
+
+            NSError *error = nil;
+            NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+            if (fetchedObjects == nil) {
+                NSLog(@"Error: %@", error);
+            }
+            self.pictures = fetchedObjects;
+            NSLog(@"Fetched Objects: %ld", [fetchedObjects count]);
+            [self.tableView reloadData];
+            
+            return;
+        }
+        self.pictures = images;
+        NSLog(@"IIIIIImages count: %ld", [images count]);
+        [self.tableView reloadData];
+        [dataProvider downloadImageDataIntoObject:self.pictures];
+    }];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -75,11 +102,6 @@ static NSString *CellIdentifier = @"Cell";
     NSLog(@"count: %ld", [self.pictures count]);
     return [self.pictures count];
 }
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    return CELL_HEIGHT;
-//}
-
 
 - (UITableViewCell *)tableView:(UITableView *)theTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     

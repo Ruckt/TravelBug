@@ -7,6 +7,7 @@
         <relationship name="picturesTaken" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Picture" inverseName="photographer" inverseEntity="Picture" syncable="YES"/>
     </entity>
     <entity name="Picture" representedClassName="Picture" syncable="YES">
+        <attribute name="imageBinaryData" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pictureID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="standardLink" optional="YES" attributeType="String" syncable="YES"/>
@@ -15,6 +16,6 @@
     </entity>
     <elements>
         <element name="Photographer" positionX="-3521" positionY="-6732" width="128" height="103"/>
-        <element name="Picture" positionX="-3789" positionY="-6759" width="128" height="118"/>
+        <element name="Picture" positionX="-3789" positionY="-6759" width="128" height="133"/>
     </elements>
 </model>

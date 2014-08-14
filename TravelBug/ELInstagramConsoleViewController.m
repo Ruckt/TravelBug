@@ -10,7 +10,7 @@
 #import "ELDataStore.h"
 #import "ELConstants.h"
 #import "Picture+Methods.h"
-#import "ELThumbnailListViewController.h"
+#import "ELMainPictureTableViewController.h"
 #import "ELPictureDataProvider.h"
 
 @interface ELInstagramConsoleViewController ()
@@ -105,7 +105,7 @@
 #pragma mark - Navigation
 
 -(void)segueToListView {
-    ELThumbnailListViewController *thumbnailListViewController = [[ELThumbnailListViewController alloc] initWithStyle:UITableViewStylePlain];
+    ELMainPictureTableViewController *thumbnailListViewController = [[ELMainPictureTableViewController alloc] initWithStyle:UITableViewStylePlain];
     [self.navigationController pushViewController:thumbnailListViewController animated:YES];
 }
 

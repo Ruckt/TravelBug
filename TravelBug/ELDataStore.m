@@ -59,7 +59,7 @@
 }
 
 - (void)addPicture:(Picture *)picture {
-    //NSLog(@"Adding picture: %@", picture);
+    NSLog(@"Adding picture: %@", picture);
     [self.pictures addObject:picture];
     [self saveContext];
 }

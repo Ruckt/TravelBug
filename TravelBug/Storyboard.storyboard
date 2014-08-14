@@ -22,10 +22,10 @@
             </objects>
             <point key="canvasLocation" x="107" y="-414"/>
         </scene>
-        <!--Thumbnail List View Controller - Travel Bug-->
+        <!--Main Picture Table View Controller - Travel Bug-->
         <scene sceneID="u6A-ec-o0R">
             <objects>
-                <tableViewController id="MAl-gf-wvM" customClass="ELThumbnailListViewController" sceneMemberID="viewController">
+                <tableViewController id="MAl-gf-wvM" customClass="ELMainPictureTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="273" sectionHeaderHeight="22" sectionFooterHeight="22" id="udZ-R5-gLM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

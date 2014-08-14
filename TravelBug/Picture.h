@@ -2,7 +2,7 @@
 //  Picture.h
 //  TravelBug
 //
-//  Created by Edan Lichtenstein on 8/9/14.
+//  Created by Edan Lichtenstein on 8/12/14.
 //  Copyright (c) 2014 Edan Lichtenstein. All rights reserved.
 //
 
@@ -17,6 +17,7 @@
 @property (nonatomic, retain) NSNumber * pictureID;
 @property (nonatomic, retain) NSString * standardLink;
 @property (nonatomic, retain) NSString * thumbnailLink;
+@property (nonatomic, retain) NSData * imageBinaryData;
 @property (nonatomic, retain) Photographer *photographer;
 
 @end

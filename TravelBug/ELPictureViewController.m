@@ -65,8 +65,10 @@ static NSInteger const STANDARD_Y = 124;
     dispatch_queue_t fetchQ = dispatch_queue_create("Fetch Image", NULL);
     dispatch_async(fetchQ, ^{
         
-        NSURL *address = [NSURL URLWithString:picture.standardLink];
-        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:address]];
+        //NSURL *address = [NSURL URLWithString:picture.standardLink];
+        //UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:address]];
+        
+        UIImage *image = [UIImage imageWithData:picture.imageBinaryData];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             self.imageView.image = image;

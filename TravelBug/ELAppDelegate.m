@@ -9,7 +9,7 @@
 #import "ELAppDelegate.h"
 #import "ELPictureDataProvider.h"
 #import "ELInstagramConsoleViewController.h"
-#import "ELThumbnailListViewController.h"
+#import "ELMainPictureTableViewController.h"
 
 @interface ELAppDelegate ()
 
@@ -25,15 +25,17 @@
 {
  //   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    self.pictureDataProvider = [[ELPictureDataProvider alloc] init];
-    [self.pictureDataProvider fetchPictures];
+  //  self.pictureDataProvider = [[ELPictureDataProvider alloc] init];
+
+    
+    //    [self.pictureDataProvider fetchPictures];
     
     // O-Auth Controller
     //ELInstagramConsoleViewController *controller = [[ELInstagramConsoleViewController alloc]init];
     //UINavigationController* navigation = [[UINavigationController alloc] initWithRootViewController:controller];
 
     
-    //ELThumbnailListViewController *thumbnailListViewController = [[ELThumbnailListViewController alloc] initWithStyle:UITableViewStylePlain];
+    //ELMainPictureTableViewController *thumbnailListViewController = [[ELMainPictureTableViewController alloc] initWithStyle:UITableViewStylePlain];
    // [self.navigationController pushViewController:thumbnailListViewController animated:YES];
     
 //    self.window.rootViewController = thumbnailListViewController;

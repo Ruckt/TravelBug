@@ -1,5 +1,6 @@
+
 //
-//  ELThumbnailListViewController.h
+//  ELMainPictureTableViewController.h
 //  TravelBug
 //
 //  Created by Edan Lichtenstein on 7/1/14.
@@ -8,6 +9,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ELThumbnailListViewController : UITableViewController
+@interface ELMainPictureTableViewController : UITableViewController
 
 @end

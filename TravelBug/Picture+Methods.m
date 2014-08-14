@@ -24,9 +24,13 @@ inManagedObjectContext:(NSManagedObjectContext *)context
     picture.thumbnailLink = thumbnail;
     picture.standardLink = standard;
     picture.location = location;
+    picture.imageBinaryData = NULL;
     return picture;
 }
 
+// NSFileManager
+// How to save images
+// Core data
 
 
 @end
