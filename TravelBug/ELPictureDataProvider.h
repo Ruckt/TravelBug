@@ -13,6 +13,4 @@
 - (void)fetchPictures;
 - (void)fetchPicturesWithCompletionHandler:(void(^)(NSArray* images, NSError *error))completionHandler;
 
-- (void)downloadImageDataIntoObject:(NSArray *)pictures;
-
 @end

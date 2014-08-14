@@ -138,14 +138,6 @@
     return resultPictures;
 }
 
-- (void)downloadImageDataIntoObject:(NSArray *)pictures
-{
-    for (Picture *onePicture in pictures) {
-        NSURL *address = [NSURL URLWithString:onePicture.thumbnailLink];
-        
-        onePicture.imageBinaryData = [NSData dataWithContentsOfURL:address];
-        NSLog(@"DDDDDDDowloaded picture at location: %@", onePicture.location);
-    }
-}
+
 
 @end

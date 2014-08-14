@@ -23,21 +23,6 @@ static NSString *CellIdentifier = @"Cell";
 
 @implementation ELMainPictureTableViewController
 
-//- (id)initWithStyle:(UITableViewStyle)style {
-//    self = [super initWithStyle:style];
-//    if (self) {
-//        
-//        self.dataStore = [ELDataStore sharedELDataStore];
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveEvent:) name:@"FetchComplete" object:nil];
-//
-//        self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];        
-//        self.pictures = [self.dataStore pictures];
-//        NSLog(@"initialized");
-//                
-//    }
-//    return self;
-//}
-
 
 - (void) viewDidLoad
 {
@@ -70,9 +55,8 @@ static NSString *CellIdentifier = @"Cell";
             return;
         }
         self.pictures = images;
-        NSLog(@"IIIIIImages count: %ld", [images count]);
         [self.tableView reloadData];
-        [dataProvider downloadImageDataIntoObject:self.pictures];
+        //[dataProvider downloadImageDataIntoObject:self.pictures];
     }];
 }
 
@@ -123,20 +107,27 @@ static NSString *CellIdentifier = @"Cell";
     
     cell.cellImageView.image = nil;
     
-    
-    dispatch_queue_t fetchQ = dispatch_queue_create("Fetch Image", NULL);
-    dispatch_async(fetchQ, ^{
+    if (picture.imageBinaryData == NULL) {
         
-        NSURL *address = [NSURL URLWithString:picture.thumbnailLink];
-        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:address]];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            //ELCustomThumbnailTableViewCell *updateCell = (ELCustomThumbnailTableViewCell *) [theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-            if (cell) { // if nil then cell is not visible hence no need to update
-                cell.cellImageView.image = image;
-            }
+        dispatch_queue_t fetchQ = dispatch_queue_create("Fetch Image", NULL);
+        dispatch_async(fetchQ, ^{
+            
+            NSURL *address = [NSURL URLWithString:picture.thumbnailLink];
+            picture.imageBinaryData = [NSData dataWithContentsOfURL:address];
+            UIImage *image = [UIImage imageWithData:picture.imageBinaryData];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                //ELCustomThumbnailTableViewCell *updateCell = (ELCustomThumbnailTableViewCell *) [theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                if (cell) { // if nil then cell is not visible hence no need to update
+                    cell.cellImageView.image = image;
+                }
+            });
         });
-    });
+    }
+    else {
+        cell.cellImageView.image = [UIImage imageWithData:picture.imageBinaryData];
+    }
+    
     NSLog(@"Return location: %@", picture.location);
     
     return cell;
