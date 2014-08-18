@@ -103,10 +103,9 @@ static NSString *CellIdentifier = @"Cell";
     //NSLog(@"thumbnail URL: %@", picture.thumbnailLink);
     
     if (!cell) {
-        // This is only being called when you are instantiating the cell for the first time.
         cell = [[ELCustomThumbnailTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier picture:picture];
-        NSLog(@" If location: %@", picture.location);
     }
+    
 
     // We are re-using a cell. We are not re-instantiating it. We are just going to change its picture.
     [cell configureCellWithPicture:picture];

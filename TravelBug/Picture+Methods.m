@@ -28,9 +28,4 @@ inManagedObjectContext:(NSManagedObjectContext *)context
     return picture;
 }
 
-// NSFileManager
-// How to save images
-// Core data
-
-
 @end

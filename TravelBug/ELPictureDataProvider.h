@@ -10,7 +10,6 @@
 
 @interface ELPictureDataProvider : NSObject
 
-- (void)fetchPictures;
 - (void)fetchPicturesWithCompletionHandler:(void(^)(NSArray* images, NSError *error))completionHandler;
 
 @end

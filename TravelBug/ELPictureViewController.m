@@ -7,12 +7,7 @@
 //
 
 #import "ELPictureViewController.h"
-
-static NSInteger const STANDARD_WIDTH = 320;
-static NSInteger const STANDARD_HEIGHT = 320;
-static NSInteger const STANDARD_X = 0;
-static NSInteger const STANDARD_Y = 124;
-
+#import "UIColor+Colors.h"
 
 @interface ELPictureViewController ()
 
@@ -31,44 +26,59 @@ static NSInteger const STANDARD_Y = 124;
     return self;
 }
 
-//- (ELPictureViewController *)initWithPicture:(Picture *)aPicture {
-//    self = [super init];
-//    if (self) {
-//        self.picture = aPicture;
-//    }
-//    
-//    return self;
-//}
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.locationLabel.text = self.picture.location;
-    
-    NSLog(@"Selected location: %@", self.picture.location);
 
-    //[self.view setBackgroundColor: [UIColor whiteColor]];
+    CAShapeLayer *shapeView = [[CAShapeLayer alloc] init];
+    [shapeView setPath:[self createLine].CGPath];
+    [[self.view layer] addSublayer:shapeView];
+
+    CAShapeLayer *shapeView2 = [[CAShapeLayer alloc] init];
+    [shapeView2 setPath:[self createSecondLine].CGPath];
+    [[self.view layer] addSublayer:shapeView2];
     
+    self.locationLabel.text = self.picture.location;
+
+
+    NSLog(@"Selected location: %@", self.picture.location);
     [self buildPictureView:self.picture];
 
-    // setup a pinch gesture recognizer and make the target the custom transition handler
+    //Custom transition methods:
     UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self.gestureTarget action:@selector(handlePinch:)];
     [self.view addGestureRecognizer:pinchRecognizer];
     
-    // setup an edge pan gesture recognizer and make the target the custom transition handler
     UIScreenEdgePanGestureRecognizer *edgePanRecognizer = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self.gestureTarget action:@selector(handleEdgePan:)];
     edgePanRecognizer.edges = UIRectEdgeLeft;
     [self.view addGestureRecognizer:edgePanRecognizer];
+    
+    
 }
 
+- (UIBezierPath*)createLine
+{
+    UIBezierPath* path = [UIBezierPath bezierPath];
+    [path moveToPoint:CGPointMake(100.0, 500.0)];
+    [path addLineToPoint:CGPointMake(300.0, 500.0)];
+    [path addLineToPoint:CGPointMake(300.0, 502.0)];
+    [path addLineToPoint:CGPointMake(100.0, 502.0)];
+    [path closePath];
+    return path;
+}
 
+- (UIBezierPath*)createSecondLine
+{
+    UIBezierPath* path = [UIBezierPath bezierPath];
+    [path moveToPoint:CGPointMake(150.0, 515.0)];
+    [path addLineToPoint:CGPointMake(300.0, 515.0)];
+    [path addLineToPoint:CGPointMake(300.0, 517.0)];
+    [path addLineToPoint:CGPointMake(150.0, 517.0)];
+    [path closePath];
+    return path;
+}
 
 -(void)buildPictureView: (Picture *)picture
 {
-    
-    //UIImageView *imageView =[[UIImageView alloc] initWithFrame:CGRectMake(STANDARD_X, STANDARD_Y, STANDARD_WIDTH, STANDARD_HEIGHT)];
-    
     dispatch_queue_t fetchQ = dispatch_queue_create("Fetch Image", NULL);
     dispatch_async(fetchQ, ^{
         
@@ -79,14 +89,44 @@ static NSInteger const STANDARD_Y = 124;
             self.imageView.image = image;
         });
     });
+}
 
+- (void)drawRect:(CGRect)rect
+{
+    // Create an oval shape to draw.
+    UIBezierPath *aPath = [UIBezierPath bezierPathWithOvalInRect:
+                           CGRectMake(0, 0, 200, 100)];
+    
+    // Set the render colors.
+    [[UIColor blackColor] setStroke];
+    [[UIColor redColor] setFill];
+    
+    CGContextRef aRef = UIGraphicsGetCurrentContext();
+    
+    // If you have content to draw after the shape,
+    // save the current state before changing the transform.
+    //CGContextSaveGState(aRef);
+    
+    // Adjust the view's origin temporarily. The oval is
+    // now drawn relative to the new origin point.
+    CGContextTranslateCTM(aRef, 50, 50);
+    
+    // Adjust the drawing options as needed.
+    aPath.lineWidth = 5;
+    
+    // Fill the path before stroking it so that the fill
+    // color does not obscure the stroked line.
+    [aPath fill];
+    [aPath stroke];
+    
+    // Restore the graphics state before drawing any other content.
+    //CGContextRestoreGState(aRef);
 }
 
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

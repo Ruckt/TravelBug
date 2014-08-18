@@ -12,8 +12,6 @@
 
 @interface ELPictureViewController : UIViewController
 
-//- (ELPictureViewController *)initWithPicture:(Picture *)aPicture;
-
 @property (strong, nonatomic) Picture *picture;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;

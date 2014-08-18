@@ -11,6 +11,7 @@
 		E218002A199729D8009934D7 /* ELPhotographerSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = E2180029199729D8009934D7 /* ELPhotographerSetup.m */; };
 		E218002E1997E488009934D7 /* Photographer.m in Sources */ = {isa = PBXBuildFile; fileRef = E218002D1997E488009934D7 /* Photographer.m */; };
 		E239E0CA1962600B00E63535 /* Picture+Methods.m in Sources */ = {isa = PBXBuildFile; fileRef = E239E0C91962600B00E63535 /* Picture+Methods.m */; };
+		E2502CEA19A19F9D00CA0A43 /* UIColor+Colors.m in Sources */ = {isa = PBXBuildFile; fileRef = E2502CE919A19F9D00CA0A43 /* UIColor+Colors.m */; };
 		E255310D198AF86500241FC3 /* ELPictureDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = E255310C198AF86500241FC3 /* ELPictureDataProvider.m */; };
 		E29C8BB1199AD05A003ADDE9 /* Picture.m in Sources */ = {isa = PBXBuildFile; fileRef = E29C8BB0199AD05A003ADDE9 /* Picture.m */; };
 		E2C9CA121960B16700EFA1EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2C9CA111960B16700EFA1EE /* Foundation.framework */; };
@@ -31,7 +32,6 @@
 		E2C9CA481960B1A400EFA1EE /* ELDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C9CA471960B1A400EFA1EE /* ELDataStore.m */; };
 		E2C9CA4B1960B60700EFA1EE /* ELConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C9CA4A1960B60700EFA1EE /* ELConstants.m */; };
 		E2C9CA4D1960BEC300EFA1EE /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2C9CA4C1960BEC300EFA1EE /* Storyboard.storyboard */; };
-		E2C9CA501960BF7200EFA1EE /* ELInstagramConsoleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C9CA4F1960BF7200EFA1EE /* ELInstagramConsoleViewController.m */; };
 		E2CD5DC919627078008A2C51 /* ELMainPictureTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CD5DC819627078008A2C51 /* ELMainPictureTableViewController.m */; };
 		E2CD5DCC19627B95008A2C51 /* ELCustomThumbnailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CD5DCB19627B95008A2C51 /* ELCustomThumbnailTableViewCell.m */; };
 		E2CD5DCF1962842B008A2C51 /* ELPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CD5DCE1962842B008A2C51 /* ELPictureViewController.m */; };
@@ -60,6 +60,8 @@
 		E218002D1997E488009934D7 /* Photographer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photographer.m; sourceTree = "<group>"; };
 		E239E0C81962600B00E63535 /* Picture+Methods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Picture+Methods.h"; sourceTree = "<group>"; };
 		E239E0C91962600B00E63535 /* Picture+Methods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Picture+Methods.m"; sourceTree = "<group>"; };
+		E2502CE819A19F9D00CA0A43 /* UIColor+Colors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Colors.h"; sourceTree = "<group>"; };
+		E2502CE919A19F9D00CA0A43 /* UIColor+Colors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Colors.m"; sourceTree = "<group>"; };
 		E255310B198AF86500241FC3 /* ELPictureDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELPictureDataProvider.h; sourceTree = "<group>"; };
 		E255310C198AF86500241FC3 /* ELPictureDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELPictureDataProvider.m; sourceTree = "<group>"; };
 		E29C8BAF199AD05A003ADDE9 /* Picture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Picture.h; sourceTree = "<group>"; };
@@ -87,8 +89,6 @@
 		E2C9CA491960B60700EFA1EE /* ELConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELConstants.h; sourceTree = "<group>"; };
 		E2C9CA4A1960B60700EFA1EE /* ELConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELConstants.m; sourceTree = "<group>"; };
 		E2C9CA4C1960BEC300EFA1EE /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
-		E2C9CA4E1960BF7200EFA1EE /* ELInstagramConsoleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELInstagramConsoleViewController.h; sourceTree = "<group>"; };
-		E2C9CA4F1960BF7200EFA1EE /* ELInstagramConsoleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELInstagramConsoleViewController.m; sourceTree = "<group>"; };
 		E2CD5DC719627078008A2C51 /* ELMainPictureTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELMainPictureTableViewController.h; sourceTree = "<group>"; };
 		E2CD5DC819627078008A2C51 /* ELMainPictureTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELMainPictureTableViewController.m; sourceTree = "<group>"; };
 		E2CD5DCA19627B95008A2C51 /* ELCustomThumbnailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCustomThumbnailTableViewCell.h; sourceTree = "<group>"; };
@@ -165,6 +165,8 @@
 				E2C9CA4C1960BEC300EFA1EE /* Storyboard.storyboard */,
 				E2CEB3FE199D379C00EBFCC8 /* LCZoomTransition.h */,
 				E2CEB3FF199D379C00EBFCC8 /* LCZoomTransition.m */,
+				E2502CE819A19F9D00CA0A43 /* UIColor+Colors.h */,
+				E2502CE919A19F9D00CA0A43 /* UIColor+Colors.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -253,8 +255,6 @@
 				E2CD5DC819627078008A2C51 /* ELMainPictureTableViewController.m */,
 				E2CD5DCD1962842B008A2C51 /* ELPictureViewController.h */,
 				E2CD5DCE1962842B008A2C51 /* ELPictureViewController.m */,
-				E2C9CA4E1960BF7200EFA1EE /* ELInstagramConsoleViewController.h */,
-				E2C9CA4F1960BF7200EFA1EE /* ELInstagramConsoleViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -399,11 +399,11 @@
 				E2C9CA241960B16700EFA1EE /* ELAppDelegate.m in Sources */,
 				E29C8BB1199AD05A003ADDE9 /* Picture.m in Sources */,
 				E2C9CA271960B16700EFA1EE /* TravelBug.xcdatamodeld in Sources */,
-				E2C9CA501960BF7200EFA1EE /* ELInstagramConsoleViewController.m in Sources */,
 				E218002A199729D8009934D7 /* ELPhotographerSetup.m in Sources */,
 				E2CD5DCC19627B95008A2C51 /* ELCustomThumbnailTableViewCell.m in Sources */,
 				E255310D198AF86500241FC3 /* ELPictureDataProvider.m in Sources */,
 				E2CEB400199D379C00EBFCC8 /* LCZoomTransition.m in Sources */,
+				E2502CEA19A19F9D00CA0A43 /* UIColor+Colors.m in Sources */,
 				E2C9CA4B1960B60700EFA1EE /* ELConstants.m in Sources */,
 				E2CD5DC919627078008A2C51 /* ELMainPictureTableViewController.m in Sources */,
 				E239E0CA1962600B00E63535 /* Picture+Methods.m in Sources */,
