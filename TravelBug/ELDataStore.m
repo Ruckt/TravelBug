@@ -9,9 +9,6 @@
 #import "ELDataStore.h"
 
 @interface ELDataStore ()
-
-
-
 @end
 
 @implementation ELDataStore
@@ -23,8 +20,6 @@
 
 
 # pragma mark - Singleton
-
-
 + (ELDataStore *)sharedELDataStore {
     static ELDataStore *_sharedELDataStore = nil;
     static dispatch_once_t onceToken;

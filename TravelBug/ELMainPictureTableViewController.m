@@ -57,14 +57,12 @@ static NSString *CellIdentifier = @"Cell";
                 NSLog(@"Error: %@", error);
             }
             self.pictures = fetchedObjects;
-            NSLog(@"Fetched Objects: %ld", [fetchedObjects count]);
             [self.tableView reloadData];
             
             return;
         }
         self.pictures = images;
         [self.tableView reloadData];
-        //[dataProvider downloadImageDataIntoObject:self.pictures];
     }];
 }
 

@@ -7,13 +7,9 @@
 //
 
 #import "ELAppDelegate.h"
-#import "ELPictureDataProvider.h"
-#import "ELInstagramConsoleViewController.h"
-#import "ELMainPictureTableViewController.h"
+#import "ELPhotographerSetup.h"
 
 @interface ELAppDelegate ()
-
-@property (strong, nonatomic) ELPictureDataProvider *pictureDataProvider;
 
 @end
 
@@ -23,6 +19,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    ELPhotographerSetup *photographerSetup = [[ELPhotographerSetup alloc] init];
+    [photographerSetup createPhotographerList];
+    
+    
  //   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
   //  self.pictureDataProvider = [[ELPictureDataProvider alloc] init];
@@ -30,17 +31,14 @@
     
     //    [self.pictureDataProvider fetchPictures];
     
+    
+    
+    
     // O-Auth Controller
     //ELInstagramConsoleViewController *controller = [[ELInstagramConsoleViewController alloc]init];
     //UINavigationController* navigation = [[UINavigationController alloc] initWithRootViewController:controller];
 
     
-    //ELMainPictureTableViewController *thumbnailListViewController = [[ELMainPictureTableViewController alloc] initWithStyle:UITableViewStylePlain];
-   // [self.navigationController pushViewController:thumbnailListViewController animated:YES];
-    
-//    self.window.rootViewController = thumbnailListViewController;
-//    self.window.backgroundColor = [UIColor whiteColor];
-//    [self.window makeKeyAndVisible];
     
     return YES;
 }

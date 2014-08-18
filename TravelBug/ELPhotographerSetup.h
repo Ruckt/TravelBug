@@ -10,4 +10,6 @@
 
 @interface ELPhotographerSetup : NSObject
 
+- (void)createPhotographerList;
+
 @end
