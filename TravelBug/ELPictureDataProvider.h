@@ -11,5 +11,6 @@
 @interface ELPictureDataProvider : NSObject
 
 - (void)fetchPicturesWithCompletionHandler:(void(^)(NSArray* images, NSError *error))completionHandler;
+- (void)performMultiplePictureRequestsWithCompletionHandler;
 
 @end

@@ -27,7 +27,7 @@
 - (void)configureCellWithPicture:(Picture *)picture {
     [self addingColor];
     self.locationLabel.text = picture.location;
-    NSLog(@"Configure location: %@", picture.location);
+    //NSLog(@"Configure location: %@", picture.location);
 
 }
 

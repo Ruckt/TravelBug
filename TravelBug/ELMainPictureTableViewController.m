@@ -64,6 +64,9 @@ static NSString *CellIdentifier = @"Cell";
         self.pictures = images;
         [self.tableView reloadData];
     }];
+    
+    [dataProvider
+     performMultiplePictureRequestsWithCompletionHandler];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -132,7 +135,7 @@ static NSString *CellIdentifier = @"Cell";
         cell.cellImageView.image = [UIImage imageWithData:picture.imageBinaryData];
     }
     
-    NSLog(@"Return location: %@", picture.location);
+    //NSLog(@"Return location: %@", picture.location);
     
     return cell;
 }
